@@ -43,6 +43,14 @@ export class GeeService implements OnModuleInit {
     });
   }
 
+  async getForestLoss(year: number | string) {
+    if (!this.initialised)
+      throw new HttpException('❌ GEE not initialised', 500);
+
+    console.log(year);
+    return { year };
+  }
+
   async getLandsat() {
     if (!this.initialised)
       throw new HttpException('❌ GEE not initialised', 500);

@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { GeeService } from './gee.service';
 
 @Controller('gee')
@@ -8,6 +8,12 @@ export class GeeController {
   @Get()
   async test() {
     return 'GEE Controller is working!';
+  }
+
+  @Get('forest-loss/:year')
+  async getForestLoss(@Param('year') year: number | string) {
+    const result = await this.geeService.getForestLoss(year);
+    return result;
   }
 
   @Get('landsat')
