@@ -1,0 +1,21 @@
+.timeSliderSection {
+  font-weight: 600;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.timeSliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.targetYear {
+  text-align: center;
+  margin: 0;
+}

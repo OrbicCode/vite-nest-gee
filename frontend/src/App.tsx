@@ -1,12 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";
+import TimeSlider from "./components/TimeSlider/TimeSlider";
+// import boundariesgeojson from "./data/geoJson/boundaries.geo.json";
 
 function App() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const baseUrl = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
+  const [targetYear, setTargetYear] = useState<number | string>(2000);
 
   useEffect(() => {
     if (!mapContainer?.current) return;
@@ -18,6 +21,24 @@ function App() {
     });
 
     mapRef.current = map;
+
+    // map.on("load", () => {
+    //   // Add boundaries layer
+    //   map.addSource("boundaries", {
+    //     type: "geojson",
+    //     data: boundariesgeojson,
+    //   });
+
+    //   map.addLayer({
+    //     id: "boundaries-layer",
+    //     type: "line",
+    //     source: "boundaries",
+    //     paint: {
+    //       "line-color": "#ffffff",
+    //       "line-width": 2,
+    //     },
+    //   });
+    // });
 
     return () => {
       mapRef.current = null;
@@ -61,6 +82,7 @@ function App() {
   return (
     <main>
       <div ref={mapContainer} id='map' className='map'></div>
+      <TimeSlider targetYear={targetYear} setTargetYear={setTargetYear} />
     </main>
   );
 }
