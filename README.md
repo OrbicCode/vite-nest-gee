@@ -14,4 +14,8 @@
   - frontend display data on map
 
 - Stage 2 (Interactivity)
-  - Create sidebar
+  - Create a time slider to show deforestaion over the years
+  - Add caching, indexed by year
+  - set up a task queue system (Loading state in the meantime)
+  - Create a sidebar to toggle additional layers
+    - use reduce functions i.e. average vegetaion per pixel block
